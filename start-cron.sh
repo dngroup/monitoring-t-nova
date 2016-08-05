@@ -1,9 +1,9 @@
 #!/bin/sh
-echo $UUID > /tmp/instance_uuid
+#echo $UUID > /tmp/instance_uuid
 /bin/mkdir -p /etc/collectd/
 echo $UUID >/etc/collectd/instance_uuid
 
-rsyslogd
-cron
-touch /var/log/cron.log
-tail -F /var/log/syslog /var/log/cron.log
+
+echo  "*/2 *  * * *   /usr/local/bin/tnova_send_metric transcoding 1" |  crontab 
+
+cron -f -L 15
