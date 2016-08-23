@@ -4,6 +4,6 @@
 echo $UUID >/etc/collectd/instance_uuid
 
 
-echo  "*/2 *  * * *   /usr/local/bin/tnova_send_metric transcoding 1" |  crontab 
+echo  "*/2 *  * * *   /usr/local/bin/tnova_send_metric $METRICNAME /$(worker_metric)" |  crontab 
 
 cron -f -L 15
