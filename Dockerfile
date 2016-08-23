@@ -15,7 +15,7 @@ ENV QUEUE soft
 ENV PORTRABBITMQ 15672
 ENV METRICNAME worker
 
-ADD tnova_send_metric /usr/local/bin/worker_metric
+ADD worker_metric /usr/local/bin/worker_metric
 RUN chmod +x /usr/local/bin/worker_metric
 
 # Run the command on container startup
