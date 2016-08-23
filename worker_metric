@@ -11,5 +11,5 @@ messageDateISO=$(echo $message |  sed 's/.*eta\\":\\"//;s/\\".*//')
 
 ## change iso date  if error (no message on the queue) get curent date
 messageDate=$(date +%s -d $messageDateISO || date +%s)
-currentDate = $(date +%s)
-echo $((currentDate-messageDate))
+currentDate=$(date +%s)
+echo $(($currentDate-$messageDate))
