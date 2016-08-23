@@ -10,7 +10,7 @@ RUN chmod +x /usr/bin/start-cron.sh
 ADD tnova_send_metric /usr/local/bin/tnova_send_metric
 RUN chmod +x /usr/local/bin/tnova_send_metric
 
-ENV RABBITMQ localhost
+ENV RABBITMQ CDN-LB
 ENV QUEUE soft
 ENV PORTRABBITMQ 15672
 ENV METRICNAME worker
