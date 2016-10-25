@@ -4,6 +4,8 @@
 echo $UUID >/etc/collectd/instance_uuid
 
 
-echo  "*/2 *  * * *   /usr/local/bin/tnova_send_metric $METRICNAME \$(/usr/local/bin/worker_metric)" |  crontab 
+
+
+echo  "*/2 *  * * *   . $HOME/.profile; /usr/local/bin/tnova_send_metric $METRICNAME \$(/usr/local/bin/worker_metric)" | crontab
 
 cron -f -L 15
