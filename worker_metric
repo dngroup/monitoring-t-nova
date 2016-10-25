@@ -7,9 +7,12 @@ QUEUE=$QUEUE
 message=$(curl -s -X POST "http://$SERVER:$PORTRABBITMQ/api/queues/%2F/$QUEUE/get" -d '{"vhost":"/","name":"soft","truncate":"50000","requeue":"true","encoding":"auto","count":"1"}' -u guest:guest)
 
 ##remove other data on message
-messageDateISO=$(echo $message |  sed 's/.*eta\\":\\"//;s/\\".*//')
+messageDateISO=$(echo $message | sed -r 's/.*eta\\": +\\"([^\\]+).*/\1/g')
 
 ## change iso date  if error (no message on the queue) get curent date
 messageDate=$(date +%s -d $messageDateISO || date +%s)
 currentDate=$(date +%s)
 echo $(($currentDate-$messageDate))
+
+
+
