@@ -3,9 +3,11 @@
 /bin/mkdir -p /etc/collectd/
 echo $UUID >/etc/collectd/instance_uuid
 
+while true
+do
+   echo "working"
+   /usr/local/bin/tnova_send_metric $METRICNAME $(/usr/local/bin/worker_metric)   
+   sleep 60
 
+done
 
-
-echo  "*/2 *  * * *   . $HOME/.profile; /usr/local/bin/tnova_send_metric $METRICNAME \$(/usr/local/bin/worker_metric)" | crontab
-
-cron -f -L 15
